@@ -1,4 +1,6 @@
-package com.dmall.demo.order.domain;
+package com.dmall.demo.order.domain.delivery;
+
+import com.dmall.demo.order.domain.common.Address;
 
 /**
  * Created by xianjing on 11/01/2018.

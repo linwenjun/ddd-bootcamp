@@ -5,12 +5,12 @@ import java.util.UUID;
 /**
  * Created by xianjing on 11/01/2018.
  */
-public class AlipayEvent extends DmallDomainEvent {
+public class PaymentCommand extends DmallDomainCommand {
     private final UUID orderId;
     private final UUID paymentId;
     private final double amount;
 
-    public AlipayEvent(UUID orderId, UUID paymentId, double amount) {
+    public PaymentCommand(UUID orderId, UUID paymentId, double amount) {
         super();
         this.orderId = orderId;
         this.paymentId = paymentId;

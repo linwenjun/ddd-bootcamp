@@ -1,7 +1,9 @@
 package com.dmall.demo.order.domain;
 
+import com.dmall.demo.order.domain.delivery.DeliveryInfo;
+import com.dmall.demo.order.domain.delivery.Recipient;
 import com.dmall.demo.order.domain.exception.TooManyItemsException;
-import com.dmall.demo.order.event.AlipayEvent;
+import com.dmall.demo.order.event.PaymentCommand;
 
 import java.util.List;
 import java.util.UUID;
@@ -53,7 +55,7 @@ public class DmallOrder {
         return this.status;
     }
 
-    public void onPaid(AlipayEvent event) {
+    public void onPaid(PaymentCommand event) {
         this.status = OrderStatus.PAID;
         this.payment.record(event.getPaymentId());
     }

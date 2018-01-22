@@ -1,4 +1,4 @@
-package com.dmall.demo.order.domain;
+package com.dmall.demo.order.domain.delivery;
 
 import java.time.ZonedDateTime;
 

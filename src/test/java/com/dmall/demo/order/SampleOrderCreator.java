@@ -1,7 +1,14 @@
 package com.dmall.demo.order;
 
 import com.dmall.demo.order.domain.*;
+import com.dmall.demo.order.domain.common.Address;
+import com.dmall.demo.order.domain.delivery.DeliveryInfo;
+import com.dmall.demo.order.domain.delivery.DeliveryMethod;
+import com.dmall.demo.order.domain.delivery.Recipient;
 import com.dmall.demo.order.domain.exception.TooManyItemsException;
+import com.dmall.demo.order.domain.product.Price;
+import com.dmall.demo.order.domain.product.Product;
+import com.dmall.demo.order.domain.product.ProductType;
 
 import java.time.ZonedDateTime;
 import java.util.Arrays;
