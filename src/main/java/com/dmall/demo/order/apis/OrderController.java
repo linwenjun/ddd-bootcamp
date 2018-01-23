@@ -1,11 +1,7 @@
-package com.dmall.order.apis;
+package com.dmall.demo.order.apis;
 
-import com.dmall.order.model.Order;
-import com.dmall.order.model.Product;
-import com.dmall.order.model.Shipping;
-import com.dmall.order.service.ProductService;
-import com.dmall.order.service.ShippingService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.dmall.demo.order.apis.dtos.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,30 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/orders")
 public class OrderController {
 
 
-    private List<OrderDto> orders = Arrays.asList(
-            new Order("o001", "p001", "g001"),
-            new Order("o002", "p002", "g002"));
+    List<OrderItemDTO> items = Arrays.asList(new OrderItemDTO("book", 1, 20));
+    private List<OrderDTO> orders = Arrays.asList(new OrderDTO("o001", items, "1" ));
 
     public OrderController() throws ParseException {
 
     }
 
     @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<OrderDtO> getOrders() {
+    public List<OrderDTO> getOrders() {
         return orders;
     }
 
-
-
-    @RequestMapping(value = "shippings/{goodsId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public Shipping getPatientById(@PathVariable("goodsId") String goodsId) {
-
-        return shippingService.getShippingDetail(goodsId);
+    @RequestMapping(value = "{oId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public List<OrderDTO> getOrdersByUser(@PathVariable("oId") String oId){
+        return orders.stream().filter(o -> o.getoId().toString().equals(oId)).collect(Collectors.toList());
     }
 }
