@@ -30,7 +30,8 @@ public class OrderController {
     }
 
     @RequestMapping(value = "{oId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public List<OrderDTO> getOrdersByUser(@PathVariable("oId") String oId){
-        return orders.stream().filter(o -> o.getoId().toString().equals(oId)).collect(Collectors.toList());
+    public OrderDTO getOrdersByUser(@PathVariable("oId") String oId){
+        List<OrderDTO> orderList = orders.stream().filter(o -> o.getoId().toString().equals(oId)).collect(Collectors.toList());
+        return orderList.get(0);
     }
 }
